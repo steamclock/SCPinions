@@ -1,6 +1,6 @@
 //
-// SCStringAdditions.h
-//
+//  NSString+SCPaths.h
+// 
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -30,7 +30,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString(SCStringAdditions)
+@interface NSString(SCStringHelpers)
 	
 - (NSString*)pathInDocumentDirectory; // Prefix the string by the document directory
 - (NSString*)pathInCacheDirectory; // Prefix the string by the cache directory

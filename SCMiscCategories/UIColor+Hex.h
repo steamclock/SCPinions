@@ -1,6 +1,6 @@
 //
-//  NSString+SCPaths.m
-// 
+//  UIColor+Hex.h
+//
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -28,26 +28,13 @@
 //
 // ----------------------
 
-#import "NSString+SCPaths.h"
+#import <UIKit/UIKit.h>
 
-@implementation NSString(SCStringAdditions)
+@interface UIColor (Hex)
 
-- (NSString*)pathInDocumentDirectory {
-	// New string prefixed by the document directory
-	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString* documentsDirectory = [paths objectAtIndex:0];
-	NSString* string = [documentsDirectory stringByAppendingPathComponent:self];
-	
-	return string;
-}
+// Creates and returns an UIColor object containing a given value.
 
-- (NSString*)pathInCacheDirectory {
-	// New string prefixed by the cache directory
-	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	NSString* documentsDirectory = [paths objectAtIndex:0];
-	NSString* string = [documentsDirectory stringByAppendingPathComponent:self];
-	
-	return string;
-}
+
++ (UIColor *)colorWithHex:(NSString *)hex;
 
 @end

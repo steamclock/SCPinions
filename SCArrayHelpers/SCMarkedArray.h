@@ -30,6 +30,7 @@
 
 // A subclass of NSMutable array that maintains a set of indices into the array that are updated when the array
 // is changed, to simplify tracking positions in arrays that are being modified
+
 #import <Foundation/Foundation.h>
 
 typedef NSInteger SCMarkedArrayMarker;
@@ -38,6 +39,7 @@ typedef NSInteger SCMarkedArrayMarker;
 // You can't have both shift up and shift down, and you can't have shift down without clamping except in
 // single marker mode (due to markers at -1 being represented as NSNotFound, which doesn't work in
 // multiple index mode)
+
 typedef enum {
     // Only zero or one markers are allowed, setMarker implicitly removes any previous value
     // (default is to allow multiple markers of same type)

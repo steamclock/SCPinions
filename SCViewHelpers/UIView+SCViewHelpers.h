@@ -1,6 +1,6 @@
 //
-//  NSString+SCSorting.h
-//
+//  UIView+UIViewHelpers.h
+//  
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -28,14 +28,18 @@
 //
 // ----------------------
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-// Some sorting utilities to mimic iTunes style sorting (ignore leading symbols, ignore leadin 'A' and 'The')
-@interface NSString (SCSorting)
+@interface UIView (SCViewHelpers)
 
--(NSString*)stringForSmartSorting;
-+(NSComparisonResult (^)(id obj1, id obj2))smartSortComparator;
-+(NSComparisonResult (^)(id obj1, id obj2))smartSortComparatorWithExtraction:(NSString* (^)(id obj))extraction;
--(BOOL)matchesSearchString:(NSString*)searchString;
+@property (nonatomic, assign) CGFloat x;
+@property (nonatomic, assign) CGFloat y;
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGPoint origin;
+@property (nonatomic, assign) CGSize size;
+@property (nonatomic, assign) CGFloat centerX;
+@property (nonatomic, assign) CGFloat centerY;
+
 
 @end

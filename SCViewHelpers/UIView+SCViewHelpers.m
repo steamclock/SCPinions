@@ -1,5 +1,5 @@
 //
-//  UIView+UIViewAdditions.m
+//  UIView+UIViewHelpers.m
 //  
 // -- Software License --
 //
@@ -28,9 +28,9 @@
 //
 // ----------------------
 
-#import "UIView+Convenience.h"
+#import "UIView+SCViewHelpers.h"
 
-@implementation UIView (Convenience)
+@implementation UIView (SCViewHelpers)
 
 - (CGFloat)x{
     return self.frame.origin.x;
