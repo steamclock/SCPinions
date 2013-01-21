@@ -6,7 +6,7 @@ Steamclock uses various tools and utilities to build our apps. We call these too
 Using SCPinions
 ---------------
 
-You can clone the entire repository and then pick and choose what pinions you use, but it might be nicer for you to use them with ```git subtree``` if you expect that you will want to contribute back to our repository.
+You can clone the entire repository and then pick and choose what pinions you use, but we recommend using them with ```git subtree``` if you expect that you will want to pull in changes as we update SCPinions. 
 
 Please note that you need to have version of git >= 1.7.11 for the following instructions to work:
 
@@ -24,13 +24,28 @@ To get changes from SCPinions and merge them into your project:
 2. ```git pull```
 3. ```git merge --squash -s subtree --no-commit SCPinions```
 
-To submit changes upstream to the SCPinions repository, do the following:
+Contributing to SCPinions
+-------------------------
+
+### Contributors with push permissions
+
+To submit changes upstream to the SCPinions repository once you have your subtree set up, do the following:
 
 1. ```git diff-tree -p SCPinions``` to review changes you made in the subtree of your master branch
+2. ```git checkout SCPinions```
 2. ```git merge --squash -s subtree --no-commit master```
-3. Submit a pull request or push changes if you have the necessary permissions for the latter.
+3. Push!
 
-The reason why we use the flags above instead of a straight merge is so that we don't grab commit history from either project when merging between them. In most cases, you're not going to want SCPinions' commit history in your project, and we're not going to want your project's commit history in ours. Feel free to use a basic ```merge``` if you do want our commit history merged with yours.
+The reason why we use the flags above instead of a straight merge is so that we don't grab commit history from either project when merging between them. In most cases, you're not going to want SCPinions' commit history in the base project, and we're not going to want the base project's commit history in ours, especially if it's proprietary. Feel free to use a basic ```merge``` if you do want our the commit history.
 
 **IMPORTANT:** When I ([afabbro](http://github.com/afabbro)) was first experimenting with subtrees, I was a little nervous about pushing back upstream because my branch appeared to have files in the root that were from my main/master project after branching. git was/is not keeping track of those files in the same context as SCPinions; when you try and operate on those files with git commands it's as though git doesn't know anything about them. That's what we want though since we don't want to push anything from the master branch up to SCPinions. Don't panic, if you've followed the above steps you should be okay.
+
+### External contributors
+
+Hey! You want to contribute to SCPinions? That's awesome. You need to go about things a little bit differently. 
+
+1. Fork our code into your own repo
+2. Follow the instructions above for 'Using SCPinions', except use the git address to your own fork rather than our repo
+3. Once you've pushed changes up to your own branch much as described above in the section for contributors with push permissions, you can then submit us a pull request on github. 
+
 
