@@ -6,7 +6,7 @@ Steamclock uses various tools and utilities to build our apps. We call these too
 Using SCPinions
 ---------------
 
-You can clone the entire repository and then pick and choose what pinions you use, but it might be nicer for you to use them with ```git subtree``` and ```sparse-checkout``` if you find that you want to contribute back to our repository.
+You can clone the entire repository and then pick and choose what pinions you use, but it might be nicer for you to use them with ```git subtree``` if you expect that you will want to contribute back to our repository.
 
 Please note that you need to have version of git >= 1.7.11 for the following instructions to work:
 
@@ -33,3 +33,4 @@ To submit changes upstream to the SCPinions repository, do the following:
 The reason why we use the flags above instead of a straight merge is so that we don't grab commit history from either project when merging between them. In most cases, you're not going to want SCPinions' commit history in your project, and we're not going to want your project's commit history in ours. Feel free to use a basic ```merge``` if you do want our commit history merged with yours.
 
 **IMPORTANT:** When I ([afabbro](http://github.com/afabbro)) was first experimenting with subtrees, I was a little nervous about pushing back upstream because my branch appeared to have files in the root that were from my main/master project after branching. git was/is not keeping track of those files in the same context as SCPinions; when you try and operate on those files with git commands it's as though git doesn't know anything about them. That's what we want though since we don't want to push anything from the master branch up to SCPinions. Don't panic, if you've followed the above steps you should be okay.
+
