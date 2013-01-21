@@ -8,7 +8,7 @@ Using SCPinions
 
 You can clone the entire repository and then pick and choose what pinions you use, but we recommend using them with ```git subtree``` if you expect that you will want to pull in changes as we update SCPinions. 
 
-Please note that you need to have version of git >= 1.7.11 for the following instructions to work:
+Please note that you need to have version of git >= 1.7.11 for the following instructions to work. You can type ```git --version``` to find out.
 
 1. ```git remote add SCPinions git@github.com:steamclock/SCPinions.git```
 2. ```git fetch SCPinions```
@@ -42,7 +42,7 @@ The reason why we use the flags above instead of a straight merge is so that we 
 
 ### External contributors
 
-Hey! You want to contribute to SCPinions? That's awesome. You need to go about things a little bit differently. 
+Hey! You want to contribute to SCPinions? That's awesome. It's easiest if you go about things a little bit differently. 
 
 1. Fork our code into your own repo
 2. Follow the instructions above for 'Using SCPinions' with subtrees, except use the git address to your own fork rather than our repo
@@ -50,6 +50,4 @@ Hey! You want to contribute to SCPinions? That's awesome. You need to go about t
 4. Submit a pull request on Github
 5. We love you forever. <3
 
-You can use submodules as an alternative if you choose.
-
-
+You can use git submodules as an alternative if you are crazy.
