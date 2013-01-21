@@ -1,6 +1,6 @@
 //
-//  NSString+SCPaths.m
-// 
+//  NSArray+SCTyped.h
+//
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -28,26 +28,24 @@
 //
 // ----------------------
 
-#import "NSString+SCStringHelpers.h"
+#import <Foundation/Foundation.h>
 
-@implementation NSString(SCStringHelpers)
+@interface NSArray (SCTyped)
 
-- (NSString*)pathInDocumentDirectory {
-	// New string prefixed by the document directory
-	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString* documentsDirectory = [paths objectAtIndex:0];
-	NSString* string = [documentsDirectory stringByAppendingPathComponent:self];
-	
-	return string;
-}
+// NOTE: all these functions are also overflow safe, they will return nil if indexing past the end of the array
 
-- (NSString*)pathInCacheDirectory {
-	// New string prefixed by the cache directory
-	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	NSString* documentsDirectory = [paths objectAtIndex:0];
-	NSString* string = [documentsDirectory stringByAppendingPathComponent:self];
-	
-	return string;
-}
+// Grab any object out by class (note: return is untyped, you need to make sure that the type you are assigning to matches)
+-(id)objectAtIndex:(NSUInteger)index ofType:(Class)type;
+
+// Grab object by type
+-(NSString*)stringAtIndex:(NSUInteger)index;
+-(NSArray*)arrayAtIndex:(NSUInteger)index;
+-(NSDictionary*)dictionaryAtIndex:(NSUInteger)index;
+-(NSNumber*)numberAtIndex:(NSUInteger)index;
+
+// Grab native types from NSNumber 
+-(int)intAtIndex:(NSUInteger)index;
+-(float)floatAtIndex:(NSUInteger)index;
+-(BOOL)boolAtIndex:(NSUInteger)index;
 
 @end

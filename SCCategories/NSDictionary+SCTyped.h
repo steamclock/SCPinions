@@ -1,6 +1,6 @@
 //
-//  NSString+SCPaths.h
-// 
+//  NSDictionary+SCTyped.h
+//
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -30,9 +30,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString(SCStringHelpers)
-	
-- (NSString*)pathInDocumentDirectory; // Prefix the string by the document directory
-- (NSString*)pathInCacheDirectory; // Prefix the string by the cache directory
-	
+@interface NSDictionary (SCTyped)
+
+// Grab any object out by class (note: return is untyped, you need to make sure that the type you are assigning to matches)
+-(id)objectForKey:(id)key ofType:(Class)type;
+
+// Grab object by type
+-(NSString*)stringForKey:(id)key;
+-(NSArray*)arrayForKey:(id)key;
+-(NSDictionary*)dictionaryForKey:(id)key;
+-(NSNumber*)numberForKey:(id)key;
+
+// Grab native types from NSNumber 
+-(int)intForKey:(id)key;
+-(float)floatForKey:(id)key;
+-(BOOL)boolForKey:(id)key;
+
 @end

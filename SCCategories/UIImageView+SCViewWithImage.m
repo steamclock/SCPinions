@@ -1,6 +1,6 @@
 //
-//  NSDictionary+SCTypedHelpers.h
-//
+//  UIImageView+SCViewWithImage.m
+//  
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -28,22 +28,12 @@
 //
 // ----------------------
 
-#import <Foundation/Foundation.h>
+#import "UIImageView+SCViewWithImage.h"
 
-@interface NSDictionary (SCTypedHelpers)
+@implementation UIImageView (SCViewWithImage)
 
-// Grab any object out by class (note: return is untyped, you need to make sure that the type you are assigning to matches)
--(id)objectForKey:(id)key ofType:(Class)type;
-
-// Grab object by type
--(NSString*)stringForKey:(id)key;
--(NSArray*)arrayForKey:(id)key;
--(NSDictionary*)dictionaryForKey:(id)key;
--(NSNumber*)numberForKey:(id)key;
-
-// Grab native types from NSNumber 
--(int)intForKey:(id)key;
--(float)floatForKey:(id)key;
--(BOOL)boolForKey:(id)key;
++ (UIImageView*)viewWithImageNamed:(NSString*)imageName {
+    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+}
 
 @end

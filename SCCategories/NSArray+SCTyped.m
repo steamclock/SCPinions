@@ -1,5 +1,5 @@
 //
-//  NSDictionary+SCTypedHelpers.m
+//  NSArray+SCTyped.m
 //
 // -- Software License --
 //
@@ -28,46 +28,46 @@
 //
 // ----------------------
 
-#import "NSDictionary+SCTypedHelpers.h"
+#import "NSArray+SCTyped.h"
 
-@implementation NSDictionary (SCTypedHelpers)
+@implementation NSArray (SCTyped)
 
 static inline id dynamicCast(id source, Class type) {
     return [source isKindOfClass:type] ? source : nil;
 }
 
--(id)objectForKey:(id)key ofType:(Class)type {
-    return dynamicCast([self objectForKey:key], type);
+-(id)objectAtIndex:(NSUInteger)index ofType:(Class)type {
+    return index < self.count ? dynamicCast([self objectAtIndex:index], type) : nil;
 }
 
--(NSString*)stringForKey:(id)key {
-    return dynamicCast([self objectForKey:key], [NSString class]);
+-(NSString*)stringAtIndex:(NSUInteger)index {
+    return index < self.count ? dynamicCast([self objectAtIndex:index], [NSString class]) : nil;
 }
 
--(NSArray*)arrayForKey:(id)key {
-    return dynamicCast([self objectForKey:key], [NSArray class]);    
+-(NSArray*)arrayAtIndex:(NSUInteger)index {
+    return index < self.count ? dynamicCast([self objectAtIndex:index], [NSArray class]) : nil;
 }
 
--(NSDictionary*)dictionaryForKey:(id)key {
-    return dynamicCast([self objectForKey:key], [NSDictionary class]);        
+-(NSDictionary*)dictionaryAtIndex:(NSUInteger)index {
+    return index < self.count ? dynamicCast([self objectAtIndex:index], [NSDictionary class]) : nil;
 }
 
--(NSNumber*)numberForKey:(id)key {
-    return dynamicCast([self objectForKey:key], [NSNumber class]);
+-(NSNumber*)numberAtIndex:(NSUInteger)index {
+    return index < self.count ? dynamicCast([self objectAtIndex:index], [NSNumber class]) : nil;
 }
 
--(int)intForKey:(id)key {
-    NSNumber* number = dynamicCast([self objectForKey:key], [NSNumber class]);
+-(int)intAtIndex:(NSUInteger)index {
+    NSNumber* number = index < self.count ? dynamicCast([self objectAtIndex:index], [NSNumber class]) : nil;
     return number ? [number intValue] : 0;
 }
 
--(float)floatForKey:(id)key {
-    NSNumber* number = dynamicCast([self objectForKey:key], [NSNumber class]);
+-(float)floatAtIndex:(NSUInteger)index {
+    NSNumber* number = index < self.count ? dynamicCast([self objectAtIndex:index], [NSNumber class]) : nil;
     return number ? [number floatValue] : 0.0f;
 }
 
--(BOOL)boolForKey:(id)key {
-    NSNumber* number = dynamicCast([self objectForKey:key], [NSNumber class]);
+-(BOOL)boolAtIndex:(NSUInteger)index {
+    NSNumber* number = index < self.count ? dynamicCast([self objectAtIndex:index], [NSNumber class]) : nil;
     return number ? [number boolValue] : NO;
 }
 

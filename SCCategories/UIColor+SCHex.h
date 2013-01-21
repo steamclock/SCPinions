@@ -1,5 +1,5 @@
 //
-//  UIColor+Hex.h
+//  UIColor+SCHex.h
 //
 // -- Software License --
 //
@@ -30,7 +30,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (Hex)
+@interface UIColor (SCHex)
 
 // Creates and returns an UIColor object containing a given value.
 

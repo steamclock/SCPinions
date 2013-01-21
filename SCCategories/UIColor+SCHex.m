@@ -1,5 +1,5 @@
 //
-//  UIColor+Hex.m
+//  UIColor+SCHex.m
 //
 // -- Software License --
 //
@@ -28,7 +28,7 @@
 //
 // ----------------------
 
-#import "UIColor+Hex.h"
+#import "UIColor+SCHex.h"
 
 static NSUInteger integerFromHexString(NSString *string) {
 	NSUInteger result = 0;
@@ -36,7 +36,7 @@ static NSUInteger integerFromHexString(NSString *string) {
 	return result;
 }
 
-@implementation UIColor (Hex)
+@implementation UIColor (SCHex)
 
 // Adapted from https://github.com/Cocoanetics/NSAttributedString-Additions-for-HTML && SSToolkit
 

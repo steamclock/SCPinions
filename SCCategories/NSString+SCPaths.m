@@ -1,6 +1,6 @@
 //
-//  UIImageView+SCHelpers.m
-//  
+//  NSString+SCPaths.m
+// 
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -28,12 +28,26 @@
 //
 // ----------------------
 
-#import "UIImageView+SCHelpers.h"
+#import "NSString+SCPaths.h"
 
-@implementation UIImageView (SCHelpers)
+@implementation NSString(SCPaths)
 
-+ (UIImageView*)viewWithImageNamed:(NSString*)imageName {
-    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+- (NSString*)pathInDocumentDirectory {
+	// New string prefixed by the document directory
+	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString* documentsDirectory = [paths objectAtIndex:0];
+	NSString* string = [documentsDirectory stringByAppendingPathComponent:self];
+	
+	return string;
+}
+
+- (NSString*)pathInCacheDirectory {
+	// New string prefixed by the cache directory
+	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+	NSString* documentsDirectory = [paths objectAtIndex:0];
+	NSString* string = [documentsDirectory stringByAppendingPathComponent:self];
+	
+	return string;
 }
 
 @end

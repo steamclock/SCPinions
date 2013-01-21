@@ -45,9 +45,11 @@ The reason why we use the flags above instead of a straight merge is so that we 
 Hey! You want to contribute to SCPinions? That's awesome. You need to go about things a little bit differently. 
 
 1. Fork our code into your own repo
-2. Follow the instructions above for 'Using SCPinions', except use the git address to your own fork rather than our repo
+2. Follow the instructions above for 'Using SCPinions' with subtrees, except use the git address to your own fork rather than our repo
 3. Push changes up to your fork using the instructions under 'Contributors with push permissions', the section immediately preceding this one if you're going the subtree route
 4. Submit a pull request on Github
 5. We love you forever. <3
+
+You can use submodules as an alternative if you choose.
 
 

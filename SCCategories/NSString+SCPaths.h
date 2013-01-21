@@ -1,6 +1,6 @@
 //
-//  NSArray+SCTypedHelpers.h
-//
+//  NSString+SCPaths.h
+// 
 // -- Software License --
 //
 // Copyright (C) 2013, Steam Clock Software, Ltd.
@@ -30,22 +30,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (SCTypedHelpers)
-
-// NOTE: all these functions are also overflow safe, they will return nil if indexing past the end of the array
-
-// Grab any object out by class (note: return is untyped, you need to make sure that the type you are assigning to matches)
--(id)objectAtIndex:(NSUInteger)index ofType:(Class)type;
-
-// Grab object by type
--(NSString*)stringAtIndex:(NSUInteger)index;
--(NSArray*)arrayAtIndex:(NSUInteger)index;
--(NSDictionary*)dictionaryAtIndex:(NSUInteger)index;
--(NSNumber*)numberAtIndex:(NSUInteger)index;
-
-// Grab native types from NSNumber 
--(int)intAtIndex:(NSUInteger)index;
--(float)floatAtIndex:(NSUInteger)index;
--(BOOL)boolAtIndex:(NSUInteger)index;
-
+@interface NSString(SCPaths)
+	
+- (NSString*)pathInDocumentDirectory; // Prefix the string by the document directory
+- (NSString*)pathInCacheDirectory; // Prefix the string by the cache directory
+	
 @end

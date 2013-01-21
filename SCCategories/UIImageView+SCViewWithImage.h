@@ -1,5 +1,5 @@
 //
-//  UIImageView+SCHelpers.h
+//  UIImageView+SCViewWithImage.h
 //
 // -- Software License --
 //
@@ -30,7 +30,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImageView (SCHelpers)
+@interface UIImageView (SCViewWithImage)
 
 + (UIImageView*)viewWithImageNamed:(NSString*)imageName;
 
