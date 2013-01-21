@@ -46,6 +46,8 @@ Hey! You want to contribute to SCPinions? That's awesome. You need to go about t
 
 1. Fork our code into your own repo
 2. Follow the instructions above for 'Using SCPinions', except use the git address to your own fork rather than our repo
-3. Once you've pushed changes up to your own branch much as described above in the section for contributors with push permissions, you can then submit us a pull request on github. 
+3. Push changes up to your fork using the instructions under 'Contributors with push permissions', the section immediately preceding this one
+4. Submit a pull request on Github
+5. We love you forever. <3
 
 
