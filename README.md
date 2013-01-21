@@ -3,10 +3,14 @@ SCPinions
 
 Steamclock uses various tools and utilities to build our apps. We call these tools Pinions and like to open source them. Right now we're still reformatting, commenting, and organizing our code so if you're here now, know that documentation is coming.
 
+<<<<<<< HEAD
 Using SCPinions
 ---------------
 
 You can clone the entire repository and then pick and choose what pinions you use, but it might be nicer for you to use them with ```git subtree``` and ```sparse-checkout``` if you find that you want to contribute back to our repository.
+=======
+Angelina is adding this message so that she has something to use to test subtree merging.
+>>>>>>> 5c91f7ea17c69280f6f612374b1449ed43bd0c68
 
 Please note that you need to have version of git >= 1.7.11 for the following instructions to work:
 
