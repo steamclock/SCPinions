@@ -51,10 +51,18 @@
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if ((buttonIndex >= 0) && (buttonIndex < [_actions count])) {
-        void(^action)() = [_actions objectAtIndex:buttonIndex];
-        action();
+        if(![[_actions objectAtIndex:buttonIndex] isEqual:[NSNull null]]) {
+            void(^action)() = [_actions objectAtIndex:buttonIndex];
+            if(action) {
+                action();
+            }
+        }
     }
-    _dismiss();
+    
+    if(_dismiss) {
+        _dismiss();
+    }
+    
     _keepAlive = nil;
 }
 
@@ -64,7 +72,7 @@
 +(UIAlertView*) alertViewWithTitle:(NSString*)title 
                            message:(NSString*)message
                            dismiss:(void(^)())dismiss 
-                 buttonsAndActions:(NSObject*) buttonsAndActions, ... { 
+                 buttonsAndActions:(NSArray*) buttonsAndActions {
     
     NSMutableArray* actions = [NSMutableArray new];
     
@@ -73,22 +81,18 @@
                                                        delegate:nil 
                                               cancelButtonTitle:nil 
                                               otherButtonTitles:nil];
-    va_list args;
-    va_start(args, buttonsAndActions);
     
-    NSObject* buttonTitle = (NSString*)buttonsAndActions;
+    int index = 0;
     
-    while(buttonTitle) {
-        NSObject* action =  va_arg(args, NSObject*);
-        
-        if(buttonTitle != [NSNull null]) {
+    while(index < buttonsAndActions.count) {
+        NSString* buttonTitle = [buttonsAndActions objectAtIndex:index++];
+        id action = [buttonsAndActions objectAtIndex:index++];
+
+        if(![buttonTitle isEqual:[NSNull null]]) {
             [alertView addButtonWithTitle:(NSString*)buttonTitle];
             [actions addObject:[action copy]];
         }
-        
-        buttonTitle = va_arg(args, NSObject*);
     }
-    va_end(args);
 
     SCAlertViewProxy* proxy = [[SCAlertViewProxy alloc] initWithActions:actions andDismiss:[dismiss copy]];
     alertView.delegate = proxy;

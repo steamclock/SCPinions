@@ -52,6 +52,6 @@
 +(UIAlertView*) alertViewWithTitle:(NSString*)title 
                            message:(NSString*)message
                            dismiss:(void(^)())dismiss // called after any dismissal
-                 buttonsAndActions:(NSObject*) buttonsAndActions, ...; // array of button name / block pairs 
+                 buttonsAndActions:(NSArray*) buttonsAndActions; // array of button name / block pairs
 
 @end

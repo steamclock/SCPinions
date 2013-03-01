@@ -51,10 +51,18 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if ((buttonIndex >= 0) && (buttonIndex < [_actions count])) {
-        void(^action)() = [_actions objectAtIndex:buttonIndex];
-        action();
+        if(![[_actions objectAtIndex:buttonIndex] isEqual:[NSNull null]]) {
+            void(^action)() = [_actions objectAtIndex:buttonIndex];
+            if(action) {
+                action();
+            }
+        }
     }
-    _dismiss();
+    
+    if(_dismiss) {
+        _dismiss();
+    }
+    
     _keepAlive = nil;
 }
 
@@ -64,7 +72,7 @@
 
 +(UIActionSheet*) actionSheetWithTitle:(NSString*) title
                                dismiss:(void(^)())dismiss
-           buttonsAndActions:(NSObject*) buttonsAndActions, ... {
+           buttonsAndActions:(NSArray*)buttonsAndActions {
     
     NSMutableArray* actions = [NSMutableArray new];
     
@@ -73,23 +81,18 @@
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:nil 
                                                     otherButtonTitles:nil];
-    va_list args;
-    va_start(args, buttonsAndActions);
+    int index = 0;
     
-    NSObject* buttonTitle = (NSString*)buttonsAndActions;
-    
-    while(buttonTitle) {
-        NSObject* action =  va_arg(args, NSObject*);
+    while(index < buttonsAndActions.count) {
+        NSString* buttonTitle = [buttonsAndActions objectAtIndex:index++];
+        id action = [buttonsAndActions objectAtIndex:index++];
         
-        if(buttonTitle != [NSNull null]) {
+        if(![buttonTitle isEqual:[NSNull null]]) {
             [actionSheet addButtonWithTitle:(NSString*)buttonTitle];
             [actions addObject:[action copy]];
         }
-        
-        buttonTitle = va_arg(args, NSObject*);
     }
-    va_end(args);
-
+    
     SCActionSheetProxy* proxy = [[SCActionSheetProxy alloc] initWithActions:actions andDismiss:[dismiss copy]];
     actionSheet.delegate = proxy;
         

@@ -49,6 +49,6 @@
  
 +(UIActionSheet*) actionSheetWithTitle:(NSString*)title 
                                dismiss:(void(^)())dismiss // called after any dismissal
-                     buttonsAndActions:(NSObject*) buttonsAndActions, ...; // array of button name / block pairs 
+                     buttonsAndActions:(NSArray*) buttonsAndActions; // array of button name / block pairs
 
 @end
