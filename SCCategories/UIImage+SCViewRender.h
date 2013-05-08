@@ -33,5 +33,6 @@
 @interface UIImage(SCViewRender)
 	
 + (UIImage*)imageWithView:(UIView *)view; // Render down an image from a view
-	
+- (UIImage*)greyscaleCopy;
+
 @end
