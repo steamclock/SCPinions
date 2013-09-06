@@ -34,5 +34,6 @@
 	
 + (UIImage*)imageWithView:(UIView *)view; // Render down an image from a view
 - (UIImage*)greyscaleCopy;
+- (UIImage *)tintedImageWithColor:(UIColor *)tintColor;
 
 @end

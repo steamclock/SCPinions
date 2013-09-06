@@ -43,14 +43,27 @@
 }
 
 - (UIImage*) greyscaleCopy {
+    return [self tintedImageWithColor:[UIColor whiteColor]];
+}
+
+- (UIImage*)tintedImageWithColor:(UIColor*)tintColor
+{
+    // Draw the image with the luminosity blend mode.
+    // On top of a white background, this will give a black and white image.
+    return [self tintedImageWithColor:tintColor blendingMode:kCGBlendModeLuminosity];
+}
+
+- (UIImage*)tintedImageWithColor:(UIColor*)tintColor blendingMode:(CGBlendMode)blendMode
+{
+    // With a little guidance from http://robots.thoughtbot.com/post/46668544473/designing-for-ios-blending-modes
+    // Blend mode info: https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_images/dq_images.html
     
     // Create a graphic context.
     UIGraphicsBeginImageContextWithOptions(self.size, YES, 1.0);
+    [tintColor setFill];
     CGRect imageRect = CGRectMake(0, 0, self.size.width, self.size.height);
-    
-    // Draw the image with the luminosity blend mode.
-    // On top of a white background, this will give a black and white image.
-    [self drawInRect:imageRect blendMode:kCGBlendModeLuminosity alpha:1.0];
+    UIRectFill(imageRect);
+    [self drawInRect:imageRect blendMode:blendMode alpha:1.0];
     
     // Get the resulting image.
     UIImage *filteredImage = UIGraphicsGetImageFromCurrentImageContext();
