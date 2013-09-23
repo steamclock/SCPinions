@@ -12,9 +12,8 @@ Please note that you need to have version of git >= 1.7.11 for the following ins
 
 1. ```git remote add SCPinions git@github.com:steamclock/SCPinions.git```
 2. ```git fetch SCPinions```
-3. ```git checkout -b SCPinions SCPinions/master```
-4. ```git checkout master```
-5. ```git read-tree --prefix=SCPinions/ -u SCPinions```
+3. ```git branch SCPinions SCPinions/master```
+4. ```git read-tree --prefix=SCPinions/ -u SCPinions```
 
 Now you have a directory in your master where SCPinions lives, and you can use it in your project.
 
