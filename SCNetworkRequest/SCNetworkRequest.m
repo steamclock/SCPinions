@@ -64,7 +64,7 @@ static int sNumNetworkRequests;
        autoStart:(BOOL)start
         response:(void (^)(NSData* data))response {
     
-    NSAssert(dispatch_get_current_queue() == dispatch_get_main_queue(), @"SCNetworkRequest must be called on main thread");
+    NSAssert([NSThread isMainThread], @"SCNetworkRequest must be called on main thread");
     NSAssert(response, @"SCNetworkRequest: must have a response block");
     
     if((self = [super init])) {
@@ -149,7 +149,7 @@ static int sNumNetworkRequests;
 }
 
 -(void)start {
-    NSAssert(dispatch_get_current_queue() == dispatch_get_main_queue(), @"SCNetworkRequest must be called on main thread");
+    NSAssert([NSThread isMainThread], @"SCNetworkRequest must be called on main thread");
 
     self.receivedData = [NSMutableData new];
     
