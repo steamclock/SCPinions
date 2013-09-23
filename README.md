@@ -21,7 +21,8 @@ To get changes from SCPinions and merge them into your project:
 
 1. ```git checkout SCPinions```
 2. ```git pull```
-3. ```git merge --squash -s subtree --no-commit SCPinions```
+3. ```git checkout master```
+4. ```git merge --squash -s subtree --no-commit SCPinions```
 
 Contributing to SCPinions
 -------------------------
