@@ -24,8 +24,9 @@ To get changes from SCPinions and merge them into your project:
 3. ```git checkout master```
 4. ```git merge --squash -s subtree --no-commit SCPinions```
 
-Warning: if you have made local changes, that merge will try to overwrite them. Either merge them to the branch before pulling, or cherrypick them over like so:
-`git cherry-pick --strategy=subtree <commitids>`
+The reason why we use --squash instead of a straight merge is so that we don't grab commit history from either project when merging between them. In most cases, you're not going to want SCPinions' commit history in the base project, and we're not going to want the base project's commit history in ours, especially if it's proprietary. --no-commit is just there to let you confirm that it worked before committing. Feel free to skip --squash and/or --no-commit if you do want our commit history (but remember to always use -s subtree!).
+
+Warning: if you have made local changes, that merge will try to overwrite them. Use one of the merge strategies below to get your local changes on the branch first.
 
 Contributing to SCPinions
 -------------------------
@@ -34,14 +35,16 @@ Contributing to SCPinions
 
 To submit changes upstream to the SCPinions repository once you have your subtree set up, do the following:
 
-1. ```git diff-tree -p SCPinions``` to review changes you made in the subtree of your master branch
+1. `git diff-tree -p SCPinions` or `git log SCPinions/` to review changes you made in the subtree of your master branch
 2. ```git checkout SCPinions```
 2. ```git merge --squash -s subtree --no-commit master```
 3. Push!
 
-The reason why we use the flags above instead of a straight merge is so that we don't grab commit history from either project when merging between them. In most cases, you're not going to want SCPinions' commit history in the base project, and we're not going to want the base project's commit history in ours, especially if it's proprietary. Feel free to use a basic ```merge``` if you do want our the commit history.
+Always use --squash and --no-commit here, to keep the project history our of SCPinions. Alternately, you can cherry-pick the relevant commits like so:
+`git cherry-pick --strategy=subtree <commitids>`
+This has the added benefit of not clobbering any other changes, so you can use it to get out of trouble if both your master SCPinions/ and your branch have changes.
 
-**IMPORTANT:** When I ([afabbro](http://github.com/afabbro)) was first experimenting with subtrees, I was a little nervous about pushing back upstream because my branch appeared to have files in the root that were from my main/master project after branching. git was/is not keeping track of those files in the same context as SCPinions; when you try and operate on those files with git commands it's as though git doesn't know anything about them. That's what we want though since we don't want to push anything from the master branch up to SCPinions. Don't panic, if you've followed the above steps you should be okay.
+**IMPORTANT:** When I ([afabbro](http://github.com/afabbro)) was first experimenting with subtrees, I was a little nervous about pushing back upstream because my branch appeared to have files in the root that were from my main/master project after branching. git was/is not keeping track of those files in the same context as SCPinions; when you try and operate on those files with git commands it's as though git doesn't know anything about them. That's what we want though since we don't want to push anything from the master branch up to SCPinions. Don't panic, if you've followed the above steps and `git log` looks clean you should be okay.
 
 ### External contributors
 
