@@ -24,9 +24,11 @@ To get changes from SCPinions and merge them into your project:
 3. ```git checkout master```
 4. ```git merge --squash -s subtree --no-commit SCPinions```
 
+Warning: if you have made local changes, that merge will try to overwrite them. Use one of the merge strategies below to get your local changes on the branch first.
+
 The reason why we use --squash instead of a straight merge is so that we don't grab commit history from either project when merging between them. In most cases, you're not going to want SCPinions' commit history in the base project, and we're not going to want the base project's commit history in ours, especially if it's proprietary. --no-commit is just there to let you confirm that it worked before committing. Feel free to skip --squash and/or --no-commit if you do want our commit history (but remember to always use -s subtree!).
 
-Warning: if you have made local changes, that merge will try to overwrite them. Use one of the merge strategies below to get your local changes on the branch first.
+Another alternative strategy, if you don't mind having our history and have no plans to contribute back, is https://help.github.com/articles/working-with-subtree-merge - it only requires one command to pull changes, but is a lot less flexible.
 
 Contributing to SCPinions
 -------------------------
