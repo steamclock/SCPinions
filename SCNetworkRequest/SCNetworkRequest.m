@@ -349,6 +349,7 @@ static int sNumNetworkRequests;
         
         if(parseError && weakSelf.error) {
             weakSelf.error(nil, 0, parseError, nil);
+            return;
         }
         
         // strip NSNull objects out of response, if requested
