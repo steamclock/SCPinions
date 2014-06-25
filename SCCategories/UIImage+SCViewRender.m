@@ -59,7 +59,7 @@
     // Blend mode info: https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_images/dq_images.html
     
     // Create a graphic context.
-    UIGraphicsBeginImageContextWithOptions(self.size, YES, 1.0);
+    UIGraphicsBeginImageContextWithOptions(self.size, YES, self.scale);
     [tintColor setFill];
     CGRect imageRect = CGRectMake(0, 0, self.size.width, self.size.height);
     UIRectFill(imageRect);
