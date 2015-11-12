@@ -173,7 +173,7 @@ static int sNumNetworkRequests;
         }
         
         NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%lu", (unsigned long)self.sentData.length];
-        
+        [request setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
         
         [request setHTTPBody:self.sentData];
     }
