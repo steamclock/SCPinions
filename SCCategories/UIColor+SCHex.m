@@ -31,9 +31,9 @@
 #import "UIColor+SCHex.h"
 
 static NSUInteger integerFromHexString(NSString *string) {
-	NSUInteger result = 0;
-	sscanf([string UTF8String], "%x", &result);
-	return result;
+    NSUInteger result = 0;
+    sscanf([string UTF8String], "%lx", &result);
+    return result;
 }
 
 @implementation UIColor (SCHex)
