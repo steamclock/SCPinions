@@ -136,7 +136,7 @@ static int sNumNetworkRequests;
         
         if(!self.error) {
             self.error = ^(NSURL* url, NSUInteger httpResponse, NSError* error, NSData* data){
-                NSLog(@"SCNetworkRequest Error: %@ - %d -%@", url, httpResponse, error);
+                NSLog(@"SCNetworkRequest Error: %@ - %lu -%@", url, (unsigned long)httpResponse, error);
             };
         }
         
@@ -172,8 +172,8 @@ static int sNumNetworkRequests;
             NSLog(@"SCNetworkRequest: missing content type header");
         }
         
-        NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", self.sentData.length];
-        [request setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
+        NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%lu", (unsigned long)self.sentData.length];
+        
         
         [request setHTTPBody:self.sentData];
     }
